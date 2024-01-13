@@ -82,6 +82,7 @@ int main(){
   printf("row sums correct!\n");
   cudaMemset(d_sums, 0, DSIZE*sizeof(float));
   column_sums<<<(DSIZE+block_size-1)/block_size, block_size>>>(d_A, d_sums, DSIZE);
+  // column_sums<<<DSIZE, 1>>>(d_A, d_sums, DSIZE);
   cudaCheckErrors("kernel launch failure");
   //cuda processing sequence step 2 is complete
   // copy vector sums from device to host:
